@@ -3,7 +3,7 @@ describe "root URL" do
   it "has a level one heading with the text 'Currency pairs'", points: 1 do
     visit "/"
 
-    expect(page).to have_tag("h1", text: /Currency\s*pairs/i)
+    expect(page).to have_tag("h1", text: /Currency\s+pairs/i)
   end
 end
 
@@ -42,7 +42,7 @@ describe "/[CURRENCY SYMBOL]" do
   it "has a level one heading with the text 'Convert [CURRENCY SYMBOL]'", points: 1 do
     visit "/CUP"
     
-    expect(page).to have_tag("h1", text: /Convert\s*CUP/i)
+    expect(page).to have_tag("h1", text: /Convert\s+CUP/i)
   end
 end
 
@@ -51,11 +51,11 @@ describe "/[CURRENCY SYMBOL]" do
   it "has a level one heading with the text 'Convert [CURRENCY SYMBOL]'", points: 1 do
     visit "/SVC"
 
-    expect(page).to have_tag("h1", text: /Convert\s*SVC/i)
+    expect(page).to have_tag("h1", text: /Convert\s+SVC/i)
 
     visit "/WST"
 
-    expect(page).to have_tag("h1", text: /Convert\s*WST/i)
+    expect(page).to have_tag("h1", text: /Convert\s+WST/i)
   end
 end
 
@@ -75,10 +75,10 @@ describe "/[CURRENCY SYMBOL]" do
       
       visit "/TMT"
     
-      expect(page).to have_tag("a", :with => { :href => "/TMT/AMD"}, :text => /Convert\s*1\s*TMT\s*to\s*AMD/i),
+      expect(page).to have_tag("a", :with => { :href => "/TMT/AMD"}, :text => /Convert\s+1\s+TMT\s+to\s+AMD/i),
         "Expected page to have a link with the text, 'Convert 1 TMT to AMD...', with an href='/TMT/AMD', but didnt' find one."
       
-      expect(page).to have_tag("a", :with => { :href => "/TMT/AOA"}, :text => /Convert\s*1\s*TMT\s*to\s*AOA/i),
+      expect(page).to have_tag("a", :with => { :href => "/TMT/AOA"}, :text => /Convert\s+1\s+TMT\s+to\s+AOA/i),
         "Expected page to have a link with the text, 'Convert 1 TMT to AOA...', with an href='/TMT/AOA', but didnt' find one."
       
   end
@@ -88,7 +88,7 @@ describe "/[CURRENCY SYMBOL]/[CURRENCY SYMBOL]" do
   it "has a level one heading with the text 'Convert [CURRENCY SYMBOL] to [CURRENCY SYMBOL]'", points: 1 do
     visit "/ANG/AOA"
     
-    expect(page).to have_tag("h1", text: /Convert\s*ANG\s*to\s*AOA/i)
+    expect(page).to have_tag("h1", text: /Convert\s+ANG\s+to\s+AOA/i)
   end
 end
 
@@ -97,7 +97,7 @@ describe "/[CURRENCY SYMBOL]/[CURRENCY SYMBOL]" do
 
     visit "/CUP/SVC"
     p page.text
-    expect(page).to have_text(/1\s*CUP\s*equals\s*0.339787\s*SVC/i),
+    expect(page).to have_text(/1\s+CUP\s+equals\s+0.339787\s+SVC/i),
       "Expected page to have text that follows the pattern, '1 CUP equals 0.339787 SVC', but it didn't."
     
   end
